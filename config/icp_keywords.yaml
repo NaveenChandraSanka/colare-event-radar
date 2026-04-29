@@ -1,0 +1,56 @@
+# Hardtech / deeptech vocabulary. Used for scoring event title + description.
+# Each keyword match adds +2 to the event's ICP score.
+# Case-insensitive match. Phrases match as substrings.
+# Edit freely — this is the primary tuning surface for false positives/negatives.
+
+keywords:
+  # Domains
+  - robotics
+  - aerospace
+  - space
+  - defense tech
+  - american dynamism
+  - dual-use
+  - hardware
+  - manufacturing
+  - advanced manufacturing
+  - climate tech
+  - climate-tech
+  - clean energy
+  - energy
+  - nuclear
+  - fusion
+  - semiconductors
+  - silicon
+  - chips
+  - autonomy
+  - autonomous
+  - drones
+  - uav
+  - materials
+  - biotech
+  - synthetic biology
+  - quantum
+  - mobility
+  - eVTOL
+  - shipbuilding
+  - maritime
+
+  # Engineering disciplines
+  - mechanical engineering
+  - hardware engineering
+  - firmware
+  - embedded
+  - controls engineering
+  - mechatronics
+  - systems engineering
+  - thermal engineering
+  - rf engineering
+
+  # Funding / community signals
+  - hardtech
+  - deeptech
+  - deep tech
+  - hard tech
+  - frontier tech
+  - frontier technology

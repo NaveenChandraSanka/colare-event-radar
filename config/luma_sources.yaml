@@ -1,0 +1,21 @@
+# Luma URLs to scrape each run. Order matters only for logging.
+# Add ICP-host calendars or city sub-feeds here as you discover them.
+#
+# Naveen finding (2026-04-28 verification run):
+#   luma.com/tech is a directory of city-week MEGA-CALENDARS (NYTW, SFTW, etc.),
+#   not individual events. Don't include it as a primary source. Instead, when
+#   one of those weeks is active in SF, add the week's calendar URL temporarily.
+
+sources:
+  # Primary: SF city feed — individual events
+  - https://luma.com/sf
+
+  # Add seasonally — uncomment during the active week:
+  # - https://luma.com/sftw                  # San Francisco Tech Week
+  # - https://luma.com/deeptechweek           # Deep Tech Week (when active)
+  # - https://luma.com/hardtech               # if such a hub exists
+
+  # Add per ICP-host calendars you discover (each org's Luma page):
+  # - https://luma.com/anduril
+  # - https://luma.com/kinetic
+  # - https://luma.com/mannys                # Manny's hosts plenty of hardtech meetups

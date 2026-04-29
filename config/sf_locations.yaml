@@ -1,0 +1,54 @@
+# Bay Area location whitelist. Event passes geo filter if its location field
+# contains any of these substrings (case-insensitive).
+# Reject everything else (NYC, LA, Boston, online-only, TBA, etc.).
+
+locations:
+  # San Francisco proper
+  - San Francisco
+  - SF,
+  - "SF "
+  - South San Francisco
+  - SoMa
+  - Mission District
+  - Presidio
+
+  # Peninsula
+  - Palo Alto
+  - Menlo Park
+  - Mountain View
+  - Sunnyvale
+  - Cupertino
+  - Redwood City
+  - San Mateo
+  - Belmont
+  - Burlingame
+  - Foster City
+  - Los Altos
+  - Stanford
+
+  # South Bay
+  - San Jose
+  - Santa Clara
+  - Milpitas
+  - Campbell
+  - Los Gatos
+
+  # East Bay
+  - Oakland
+  - Berkeley
+  - Emeryville
+  - Alameda
+  - Hayward
+  - Fremont
+  - Richmond
+  - Walnut Creek
+
+  # North Bay
+  - Sausalito
+  - Mill Valley
+  - San Rafael
+
+  # Catch-all region terms
+  - Bay Area
+  - SF Bay
+  - Silicon Valley

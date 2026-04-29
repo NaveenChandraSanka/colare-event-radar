@@ -1,0 +1,76 @@
+# Allowlist of host organizations whose events are high-signal by definition.
+# Match on event "host" / "presented by" / "hosted by" field.
+# A match adds +5 (highest single-signal weight).
+# Naveen: extend this aggressively — every ICP-network host you add tightens the radar.
+
+# Match is case-insensitive substring. "Anduril" matches "Anduril Industries".
+
+hosts:
+  # Hardtech operators
+  - Anduril
+  - Hadrian
+  - Saronic
+  - Apex
+  - Apex Space
+  - Varda
+  - Varda Space
+  - K2 Space
+  - Astranis
+  - Boom
+  - Boom Supersonic
+  - Castelion
+  - Shield AI
+  - Skydio
+  - Zipline
+  - Joby
+  - Archer
+  - Hermeus
+  - Stoke Space
+  - Relativity
+  - Relativity Space
+  - ABL Space
+  - Impulse Space
+  - Vast
+  - Radiant
+  - General Atomics
+  - Helsing
+  - Palantir
+  - Epirus
+  - Mach Industries
+  - True Anomaly
+  - Rocket Lab
+  - Firefly
+  - Axiom Space
+  - Diamond Age
+  - Machina Labs
+
+  # VCs investing in the ICP
+  - American Dynamism
+  - a16z American Dynamism
+  - Andreessen Horowitz
+  - Founders Fund
+  - Lux Capital
+  - 8VC
+  - Caffeinated Capital
+  - Khosla Ventures
+  - General Catalyst
+  - Construct Capital
+  - DCVC
+  - Data Collective
+  - Refactor Capital
+  - Fifty Years
+  - Riot Ventures
+  - Countdown Capital
+  - Embedded Ventures
+  - Shield Capital
+
+  # Hardtech communities / collectives
+  - Kinetic
+  - Foundations
+  - Hard Tech Founders
+  - Deep Tech Week
+  - Hereafter
+  - Frontier Tower
+  - Manny's
+  - Hard Tech SF
+  - SF Hardtech
