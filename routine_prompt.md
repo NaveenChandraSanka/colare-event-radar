@@ -30,15 +30,26 @@ You are the Colare Event Radar. Each run, you find SF Bay Area Luma events in th
 
 4. **Window filter**: drop events where `event_date` is before today or more than 14 days from today.
 
-5. **Score** each remaining event:
-   - `+2` for each hardtech keyword (from `icp_keywords.yaml`) found in `title` or `description`
-   - `+2` for each talent keyword (from `talent_keywords.yaml`) found in `title` or `description`
-   - `+5` if `host` matches any entry in `icp_host_orgs.yaml`
-   - Track which signals matched — needed for the Notion `Signals` field
+5. **Score** each remaining event using **position-weighted scoring** — title position is the strongest signal of what an event is *about*; description-only mentions are tangential.
+
+   For each hardtech keyword (from `icp_keywords.yaml`):
+   - Found in `title`: **+3**
+   - Found in `description` only: **+1**
+
+   For each talent keyword (from `talent_keywords.yaml`):
+   - Found in `title`: **+3**
+   - Found in `description` only: **+1**
+
+   For `host` field:
+   - Matches any entry in `icp_host_orgs.yaml`: **+5**
+
+   Count each unique keyword at most once (don't double-count if the same keyword appears in both title and description — take the title score).
+
+   Track which signals matched — needed for the Notion `Signals` field (multi-select: `hardtech`, `talent`, `host-allowlist`).
 
    **Matching rules (important — sloppy matching produces false positives):**
    - Title/description matches: use **word-boundary regex**, case-insensitive (e.g. `\bcto\b`). Plain substring matching causes "cto" to match "context", "ai" to match "said", etc.
-   - Multi-word keywords (e.g. "founders dinner", "deep tech"): match as exact phrases bounded by word boundaries, case-insensitive.
+   - Multi-word keywords (e.g. "engineering hiring", "deep tech"): match as exact phrases bounded by word boundaries, case-insensitive.
    - Host allowlist matches: case-insensitive **substring** match is OK because host fields are short and well-formed (e.g. "Anduril" should still match "Anduril Industries").
 
 6. **Drop zero-score events.** No signal means no alert.

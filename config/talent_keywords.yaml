@@ -1,30 +1,37 @@
-# Hiring/talent themes. Each match adds +2 to event score.
-# Targets events where Colare's HR + Sr Eng personas are likely to be present.
+# Buyer-persona signals — events where Colare's HR / Sr Eng / hiring-manager
+# personas are likely to be present. Each match adds to event score per the
+# position-weighted rule in routine_prompt.md (+3 in title, +1 in description).
+#
+# Tightened 2026-04-29 after first verification run: dropped broad single-word
+# terms ("founders", "hire", "hiring", "talent", "careers", "jobs", "meet the
+# team") that were matching every VC mixer / ecommerce founder dinner / generic
+# networking event in SF. The bar now: a phrase here should signal that
+# engineering leaders or hiring managers will actually be in the room.
 
 keywords:
-  - hiring mixer
-  - hiring event
-  - eng leadership
-  - engineering leadership
-  - head of eng
+  # Engineering leadership titles
   - head of engineering
+  - head of eng
   - vp engineering
   - vp of engineering
   - cto
   - chief technology officer
-  - talent
-  - recruiter
-  - recruiting
-  - tech recruiting
+  - eng leadership
+  - engineering leadership
   - engineering management
   - engineering manager
   - eng manager
-  - founders
-  - founder dinner
-  - founder mixer
+  - director of engineering
+
+  # Hiring/recruiting events (multi-word phrases only — "hiring" alone is too broad)
+  - hiring mixer
+  - hiring event
+  - engineering hiring
+  - tech recruiting
+  - engineering recruiter
+  - technical recruiter
+
+  # Hardtech-specific founder signals (kept narrow)
   - technical founders
-  - hire
-  - hiring
-  - careers
-  - jobs
-  - meet the team
+  - hardware founders
+  - deep tech founders
