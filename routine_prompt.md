@@ -36,6 +36,11 @@ You are the Colare Event Radar. Each run, you find SF Bay Area Luma events in th
    - `+5` if `host` matches any entry in `icp_host_orgs.yaml`
    - Track which signals matched — needed for the Notion `Signals` field
 
+   **Matching rules (important — sloppy matching produces false positives):**
+   - Title/description matches: use **word-boundary regex**, case-insensitive (e.g. `\bcto\b`). Plain substring matching causes "cto" to match "context", "ai" to match "said", etc.
+   - Multi-word keywords (e.g. "founders dinner", "deep tech"): match as exact phrases bounded by word boundaries, case-insensitive.
+   - Host allowlist matches: case-insensitive **substring** match is OK because host fields are short and well-formed (e.g. "Anduril" should still match "Anduril Industries").
+
 6. **Drop zero-score events.** No signal means no alert.
 
 7. **Dedup against Notion**: query the Notion database `Colare Event Radar` for all rows. Build a set of existing `Slug` values. Drop any scraped event whose slug is already in the set.
