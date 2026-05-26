@@ -1,6 +1,23 @@
 # Setup — One-time steps to go live
 
-You're 5 steps away from a daily 7am PT alert in `#colare-events-radar`.
+You're 6 steps away from a daily 7am PT alert in `#colare-events-radar`.
+
+> **Why Firecrawl?** Luma's listing and detail pages are JS-rendered — a plain fetch returns an empty shell, which historically caused the routine to hallucinate event titles, hosts, and locations. Firecrawl renders JS server-side and returns clean markdown, so the routine works from real page content. The upgraded `routine_prompt.md` hard-aborts if Firecrawl isn't connected rather than silently falling back to a non-rendering fetcher.
+
+---
+
+## 0. Wire up Firecrawl MCP (required — do this first)
+
+1. Get a Firecrawl API key:
+   - Sign in at [firecrawl.dev](https://firecrawl.dev) → **Dashboard** → **API Keys** → **Create**
+   - The free tier (500 scrapes/mo) is enough for a daily 7am run with ~60 detail-page fetches
+2. The repo already includes `.claude/settings.json` which tells the Routine to spin up the Firecrawl MCP server via `npx firecrawl-mcp`. It reads the API key from a `FIRECRAWL_API_KEY` env var.
+3. In the Routine settings at [claude.ai/code/routines](https://claude.ai/code/routines), under **Environment variables**, add:
+   - Name: `FIRECRAWL_API_KEY`
+   - Value: your Firecrawl key
+4. Confirm the MCP server appears in the connector list when the Routine starts (visible in the run log on first execution).
+
+If the routine ever runs without Firecrawl connected, it now aborts immediately rather than posting a fabricated digest — so a missing/expired key surfaces as silence, not noise.
 
 ---
 
@@ -54,7 +71,7 @@ Go to [claude.ai/code/routines](https://claude.ai/code/routines) → **New routi
 | Schedule | `0 7 * * *` (7am daily, your local TZ) |
 | Repository | `<your-gh-handle>/colare-event-radar` |
 | Branch | `main` |
-| Connectors | ✅ Slack (channel access to `#colare-events-radar`) · ✅ Notion (DB access from step 2) |
+| Connectors | ✅ Slack (channel access to `#colare-events-radar`) · ✅ Notion (DB access from step 2) · ✅ Firecrawl MCP (auto-spawned from `.claude/settings.json`, needs `FIRECRAWL_API_KEY` env var from step 0) |
 | Prompt | Paste contents of `routine_prompt.md` from the repo |
 
 Click **Save**.
